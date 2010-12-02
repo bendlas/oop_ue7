@@ -60,13 +60,11 @@ Die Klasse Test soll wie üblich die wichtigsten Normal- und Grenzfälle überpr
 ### In der Lösung der Aufgabe dürfen Sie folgende Sprachkonzepte nicht verwenden:
 
 - dynamische Typabfragen
-
     (über getClass und instanceof) und Typumwandlungen
 
 - bedingte Anweisungen wie if- und switch-Anweisungen sowie bedingte Ausdrücke (= Ausdrücke der Form x?y:z)
 
--Werfen und Abfangen von Ausnahmen
-
+- Werfen und Abfangen von Ausnahmen
     Bauen Sie Ihre Lösung stattdessen auf (mehrfaches) dynamisches Binden auf.
 
 ### Warum die Aufgabe diese Form hat:
