@@ -1,5 +1,5 @@
 
-public class CF1Slot extends SimpleSlot {
+public class CF1Slot extends Slot {
 
 	@Override
 	public String getName() {

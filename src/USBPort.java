@@ -1,5 +1,5 @@
 
-public class USBPort extends SimpleSlot {
+public class USBPort extends Slot {
 
 	@Override
 	public String getName() {
