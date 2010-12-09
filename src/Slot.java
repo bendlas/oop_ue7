@@ -19,4 +19,10 @@ public abstract class Slot implements Device {
 			enclosed = null;
 		}
 	}
+	
+
+	@Override
+	public String toString() {
+		return getName() + "{" + enclosed + "}";
+	}
 }

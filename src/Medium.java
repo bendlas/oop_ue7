@@ -12,6 +12,11 @@ abstract public class Medium implements Device {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return getName();
+	}
+
 	/**
 	 * Call this to actually insert the Medium
 	 */
