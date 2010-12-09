@@ -1,9 +1,9 @@
 
-public class MemoryStick extends Medium {
+public class MicroSD extends Medium {
 
 	private String name;
 
-	public MemoryStick (String name){
+	public MicroSD (String name){
 		this.name = name;
 	}
 
