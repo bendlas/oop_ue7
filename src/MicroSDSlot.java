@@ -3,7 +3,7 @@ public class MicroSDSlot extends Slot {
 
 	@Override
 	protected boolean doInsert(Medium medium) {
-		return medium.insertToMicroSD(this);
+		return medium.insertToMicroSDSlot(this);
 	}
 
 	@Override

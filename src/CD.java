@@ -10,4 +10,17 @@ public class CD extends Medium {
 	public String getName(){
 		return name;
 	}
+	
+	@Override
+	protected boolean insertToCDSlot(CDSlot slot) {
+		return doInsert(slot);
+	}
+	@Override
+	protected boolean insertToDVDSlot(DVDSlot slot) {
+		return doInsert(slot);
+	}
+	@Override
+	protected boolean insertToBlueRaySlot(BlueRaySlot slot) {
+		return doInsert(slot);
+	}
 }

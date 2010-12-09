@@ -10,4 +10,9 @@ public class MemoryStick extends Medium {
 	public String getName(){
 		return name;
 	}
+	
+	@Override
+	protected boolean insertToMemoryStickSlot(MemoryStickSlot slot) {
+		return doInsert(slot);
+	}
 }

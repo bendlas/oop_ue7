@@ -10,4 +10,12 @@ public class DVD extends Medium {
 	public String getName(){
 		return name;
 	}
+	@Override
+	protected boolean insertToDVDSlot(DVDSlot slot) {
+		return doInsert(slot);
+	}
+	@Override
+	protected boolean insertToBlueRaySlot(BlueRaySlot slot) {
+		return doInsert(slot);
+	}
 }

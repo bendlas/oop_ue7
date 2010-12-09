@@ -10,4 +10,18 @@ public class MicroSD extends Medium {
 	public String getName(){
 		return name;
 	}
+	
+	@Override
+	protected boolean insertToMicroSDSlot(MicroSDSlot slot) {
+		return doInsert(slot);
+	}
+	@Override
+	protected boolean insertToMiniSDSlot(MiniSDSlot slot) {
+		return doInsert(slot);
+	}
+	@Override
+	protected boolean insertToSDSlot(SDSlot slot) {
+		return doInsert(slot);
+	}
+	
 }

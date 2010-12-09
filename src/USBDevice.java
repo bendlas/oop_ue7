@@ -9,7 +9,7 @@ abstract public class USBDevice extends Medium implements DeviceHolder {
 	}
 	
 	@Override
-	public boolean insertToUSB(USBPort port) {
+	public boolean insertToUSBSlot(USBSlot port) {
 		return doInsert(port);
 	}
 }

@@ -3,7 +3,7 @@ public class SDSlot extends Slot {
 
 	@Override
 	protected boolean doInsert(Medium medium) {
-		return medium.insertToSD(this);
+		return medium.insertToSDSlot(this);
 	}
 
 	@Override

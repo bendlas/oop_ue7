@@ -10,4 +10,9 @@ public class SD extends Medium {
 	public String getName(){
 		return name;
 	}
+	
+	@Override
+	protected boolean insertToSDSlot(SDSlot slot) {
+		return doInsert(slot);
+	}
 }

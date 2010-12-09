@@ -1,5 +1,5 @@
 
-public class USBPort extends Slot {
+public class USBSlot extends Slot {
 
 	@Override
 	public String getName() {
@@ -8,6 +8,6 @@ public class USBPort extends Slot {
 
 	@Override
 	protected boolean doInsert(Medium medium) {
-		return medium.insertToUSB(this);
+		return medium.insertToUSBSlot(this);
 	}
 }

@@ -3,7 +3,7 @@ public class DVDSlot extends Slot {
 
 	@Override
 	protected boolean doInsert(Medium medium) {
-		return medium.insertToDVD(this);
+		return medium.insertToDVDSlot(this);
 	}
 
 	@Override

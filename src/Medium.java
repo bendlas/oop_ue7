@@ -5,7 +5,7 @@ abstract public class Medium implements Device {
 	/**
 	 * package visible for Slot
 	 */
-	void eject() {
+	protected void eject() {
 		while (holder != null) {
 			holder.eject();
 			holder = null;
@@ -23,34 +23,34 @@ abstract public class Medium implements Device {
 		return false;
 	}
 	
-	protected boolean insertToUSB(USBPort port) {
+	protected boolean insertToUSBSlot(USBSlot port) {
 		return false;
 	}
-	protected boolean insertToBlueRay(BlueRaySlot slot){
+	protected boolean insertToBlueRaySlot(BlueRaySlot slot){
 		return false;
 	}
-	protected boolean insertToCD(CDSlot slot){
+	protected boolean insertToCDSlot(CDSlot slot){
 		return false;
 	}
-	protected boolean insertToCF1(CF1Slot slot){
+	protected boolean insertToCF1Slot(CF1Slot slot){
 		return false;
 	}
-	protected boolean insertToCF2(CF2Slot slot){
+	protected boolean insertToCF2Slot(CF2Slot slot){
 		return false;
 	}
-	protected boolean insertToDVD(DVDSlot slot){
+	protected boolean insertToDVDSlot(DVDSlot slot){
 		return false;
 	}
-	protected boolean insertToMemoryStick(MemoryStickSlot slot){
+	protected boolean insertToMemoryStickSlot(MemoryStickSlot slot){
 		return false;
 	}
-	protected boolean insertToMicroSD(MicroSDSlot slot){
+	protected boolean insertToMicroSDSlot(MicroSDSlot slot){
 		return false;
 	}
-	protected boolean insertToMiniSD(MiniSDSlot slot){
+	protected boolean insertToMiniSDSlot(MiniSDSlot slot){
 		return false;
 	}
-	protected boolean insertToSD(SDSlot slot){
+	protected boolean insertToSDSlot(SDSlot slot){
 		return false;
 	}
 }

@@ -10,4 +10,13 @@ public class CF1 extends Medium {
 	public String getName(){
 		return name;
 	}
+	
+	@Override
+	protected boolean insertToCF1Slot(CF1Slot slot) {
+		return doInsert(slot);
+	}
+	@Override
+	protected boolean insertToCF2Slot(CF2Slot slot) {
+		return doInsert(slot);
+	}
 }

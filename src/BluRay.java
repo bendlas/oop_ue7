@@ -10,4 +10,9 @@ public class BluRay extends Medium {
 	public String getName(){
 		return name;
 	}
+	
+	@Override
+	protected boolean insertToBlueRaySlot(BlueRaySlot slot) {
+		return doInsert(slot);
+	}
 }

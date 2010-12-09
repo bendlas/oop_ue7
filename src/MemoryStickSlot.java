@@ -3,7 +3,7 @@ public class MemoryStickSlot extends Slot {
 
 	@Override
 	protected boolean doInsert(Medium medium) {
-		return medium.insertToMemoryStick(this);
+		return medium.insertToMemoryStickSlot(this);
 	}
 
 	@Override

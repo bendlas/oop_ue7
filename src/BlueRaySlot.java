@@ -3,7 +3,7 @@ public class BlueRaySlot extends Slot {
 
 	@Override
 	protected boolean doInsert(Medium medium) {
-		return medium.insertToBlueRay(this);
+		return medium.insertToBlueRaySlot(this);
 	}
 
 	@Override
