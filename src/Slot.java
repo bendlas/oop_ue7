@@ -15,8 +15,9 @@ public abstract class Slot implements Device {
 	
 	public void eject() {
 		while (enclosed != null) {
-			enclosed.eject();
+			Medium in = enclosed;
 			enclosed = null;
+			in.eject();
 		}
 	}
 	
