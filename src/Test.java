@@ -150,6 +150,7 @@ public class Test {
 		BluRay bd3 = new BluRay("The Ramones in Concert SPECIAL");
 		
 		assertConnect(cd, cd1, true);
+		assertConnect(cd, cd2, false); //fehler: cd-slot bereits belegt
 		cd.eject();
 		assertConnect(cd, dvd1, false);
 		assertConnect(cd, bd1, false);
@@ -162,11 +163,13 @@ public class Test {
 		assertConnect(dvd, bd2, false);
 		
 		assertConnect(bd, cd3, true);
+		assertConnect(cd, cd3, false); //fehler: cd3 liegt schon im bd-slot
 		bd.eject();
 		assertConnect(bd, dvd3, true);
 		bd.eject();
 		assertConnect(bd, bd3, true);
 		bd.eject();
+		
 		info("...sucess! \n");
 	}
 	
