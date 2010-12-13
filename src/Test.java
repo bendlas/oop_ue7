@@ -115,7 +115,7 @@ public class Test {
 		//MiniSD passt in SD Slot
 		assertConnect(sd, miniSDCard, true);
 
-		//wenn schon eine MiniSD im SD slot ist kann keine weitere SD Karte hinzugefügt werden
+		//wenn schon eine MiniSD im SD slot ist kann keine weitere SD Karte hinzugefï¿½gt werden
 		assertConnect(sd, SDCard, false);
 		sd.eject();
 		
@@ -135,7 +135,7 @@ public class Test {
 		
 		//plug Hama MiniSDCard in SDSlot, and then try to plug it into MiniSDSlot without eject
 		assertConnect(sd, miniSDCard, true);
-		//sollte nicht möglich sein
+		//sollte nicht mï¿½glich sein
 		assertConnect(mSd, miniSDCard, false);
 		info("... sucess!" + "\n");
 
@@ -143,8 +143,34 @@ public class Test {
 	}
 	private void testOptical() {
 		info("Testing Optical Drives");
-		error("TODO: No test defined");
-//		assert_(false, "Please define tests");
+		CD cd1 = new CD("Sex Pistols");
+		CD cd2 = new CD("The Clash");
+		CD cd3 = new CD("The Ramones");
+		DVD dvd1 = new DVD("Sex Pistols in Concert");
+		DVD dvd2 = new DVD("The Clash in Concert");
+		DVD dvd3 = new DVD("The Ramones in Concert");
+		BluRay bd1 = new BluRay("Sex Pistols in Concert SPECIAL");
+		BluRay bd2 = new BluRay("The Clash in Concert SPECIAL");
+		BluRay bd3 = new BluRay("The Ramones in Concert SPECIAL");
+		
+		assertConnect(cd, cd1, true);
+		cd.eject();
+		assertConnect(cd, dvd1, false);
+		assertConnect(cd, bd1, false);
+		
+		assertConnect(dvd, cd2, true);
+		dvd.eject();
+		assertConnect(dvd, dvd2, true);
+		dvd.eject();
+		dvd.eject();
+		assertConnect(dvd, bd2, false);
+		
+		assertConnect(bd, cd3, true);
+		bd.eject();
+		assertConnect(bd, dvd3, true);
+		bd.eject();
+		assertConnect(bd, bd3, true);
+		bd.eject();
 	}
 	
 	private void testUSBDev(){
