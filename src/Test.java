@@ -131,7 +131,7 @@ public class Test {
 		
 		//plug Hama MiniSDCard in SDSlot, and then try to plug it into MiniSDSlot without eject
 		assertConnect(sd, miniSDCard, true);
-		//sollte nicht m�glich sein
+		//sollte nicht moeglich sein
 		assertConnect(mSd, miniSDCard, false);
 		info("... sucess!" + "\n");
 
