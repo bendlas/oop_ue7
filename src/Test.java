@@ -87,8 +87,11 @@ public class Test {
 	}
 	private void testBase() {
 		info("Testing Optical Drives");
-		sd.insert(new SD("Babz' Nacktfotos"));
+		SD m = new SD("Babz' Nacktfotos");
+		assertConnect(sd, m, true);
 		printComputer();
+//		sd.eject();
+//		printComputer();
 		error("TODO: No test defined");
 	}
 	private void testEjectable() {
@@ -127,5 +130,9 @@ public class Test {
 			error(out);
 			throw new AssertionError(out);
 		}
+	}
+	
+	public static void assertConnect(Slot slot, Medium medium, boolean connects) {
+		assert_(slot.insert(medium) == connects, String.format("When inserting %s to %s, connected %b", medium, slot, !connects));
 	}
 }
