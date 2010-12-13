@@ -21,6 +21,9 @@ public abstract class Slot implements Device {
 		}
 	}
 	
+	public Medium getInserted() {
+		return enclosed;
+	}
 
 	@Override
 	public String toString() {
