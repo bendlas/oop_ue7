@@ -81,7 +81,8 @@ public class Test {
 		new Test().testOptical();
 		new Test().testUSBDev();
 		new Test().testOutput();
-
+		info("All testcases successful");
+		System.exit(0);
 	}
 	private void testOutput() {
 		info("Testing output ...");
@@ -234,7 +235,7 @@ public class Test {
 	public static void assert_(boolean cond, String out) {
 		while(!cond) {
 			error(out);
-			throw new AssertionError(out);
+			System.exit(1);
 		}
 	}
 	
