@@ -16,6 +16,7 @@ public class Test {
 	Slot usb1;
 	Slot usb2;
 	Slot usb3;
+	Slot memStick;
 	
 	Device hd, extHd, ssd;
 	USBDevice extHdDev, cardReader;
@@ -41,6 +42,7 @@ public class Test {
 		usb1 = new USBSlot();
 		usb2 = new USBSlot();
 		usb3 = new USBSlot();
+		memStick = new MemoryStickSlot();
 
 		extHdDev = new USBDevice() {
 			@Override
@@ -64,7 +66,7 @@ public class Test {
 		};
 		
 		computer = new Computer(
-				hd, ssd, cd, dvd, sd, mSd, usb1, usb2, cardReader);
+				hd, ssd, cd, dvd, sd, mSd, usb1, usb2, cardReader, memStick);
 	}
 	
 
@@ -120,6 +122,9 @@ public class Test {
 		CF1 CF1Card = new CF1("Hama CompactFlash Card");
 		CF2 CF2Card = new CF2("Hama CompactFlash II Card");
 		MemoryStick MStick = new MemoryStick("Sony MemoryStick");
+		DVD dvd4 = new DVD("blabla");
+		CD cd4 = new CD("lala");
+		BluRay bd4 = new BluRay("troet");
 		
 		//SD Card in SD Slot
 		assertConnect(sd, SDCard, true);
@@ -133,10 +138,16 @@ public class Test {
 		assertConnect(sd, miniSDCard, true);
 
 		//wenn schon eine MiniSD im SD slot ist kann keine weitere SD Karte hinzugefuegt werden
+		info("SD-Slot ist bereits belegt mit MiniSDCard");
 		assertConnect(sd, SDCard, false);
 		sd.eject();
 		
+		//MemoryStick passt in MemoryStickSlot
+		assertConnect(memStick, MStick, true);
+		memStick.eject();
+		
 		//MemoryStick passt nicht in den SD Slot
+		info("MemoryStick doesn't fit into SD-Slot");
 		assertConnect(sd, MStick, false);
 		sd.eject();
 		
@@ -148,14 +159,17 @@ public class Test {
 		assertConnect(cf2, CF1Card, true);
 		
 		//CF2Card passt nicht in CF1Slot
+		info("CF2-Card doesn't fit into CF1-Slot");
 		assertConnect(cf1, CF2Card, false);
 		
 		//plug Hama MiniSDCard in SDSlot, and then try to plug it into MiniSDSlot without eject
 		assertConnect(sd, miniSDCard, true);
 		//sollte nicht moeglich sein
+		info("Failed! MiniSD-Card is already in SD-Slot");
 		assertConnect(mSd, miniSDCard, false);
 		info("... sucess!" + "\n");
-
+		
+		
 		
 	}
 	private void testOptical() {
@@ -169,6 +183,15 @@ public class Test {
 		BluRay bd1 = new BluRay("Sex Pistols in Concert SPECIAL");
 		BluRay bd2 = new BluRay("The Clash in Concert SPECIAL");
 		BluRay bd3 = new BluRay("The Ramones in Concert SPECIAL");
+		SD SDCard = new SD("Hama SD Card");
+		MicroSD microSDCard = new MicroSD("Hama MicroSD Card");
+		MiniSD miniSDCard = new MiniSD("Hama MiniSD Card");
+		CF1 CF1Card = new CF1("Hama CompactFlash Card");
+		CF2 CF2Card = new CF2("Hama CompactFlash II Card");
+		MemoryStick MStick = new MemoryStick("Sony MemoryStick");
+		DVD dvd4 = new DVD("blabla");
+		CD cd4 = new CD("lala");
+		BluRay bd4 = new BluRay("troet");
 		
 		assertConnect(cd, cd1, true);
 		info("cd-slot bereits belegt von cd1");
@@ -193,6 +216,42 @@ public class Test {
 		assertConnect(bd, bd3, true);
 		bd.eject();
 		
+		info("CF2-Card fits neither into CD-, nor DVD- or BluRay-Slot");
+		assertConnect(bd, cd3, true);
+		
+		info("CD doesn't fit into SD-, MiniSD-, MicroSD-, MemoryStick-, CF1-, CF2-, and USB-Slot");
+		assertConnect(sd, cd4, false);
+		assertConnect(mSd, cd4, false);
+		assertConnect(muSd, cd4, false);
+		assertConnect(memStick, cd4, false);
+		assertConnect(cf1, cd4, false);
+		assertConnect(cf2, cd4, false);
+		assertConnect(usb1, cd4, false);
+		assertConnect(usb2, cd4, false);
+		assertConnect(usb3, cd4, false);
+		
+		info("DVD doesn't fit into SD-, MiniSD-, MicroSD-, MemoryStick-, CF1-, CF2-, and USB-Slot");
+		assertConnect(sd, dvd4, false);
+		assertConnect(mSd, dvd4, false);
+		assertConnect(muSd, dvd4, false);
+		assertConnect(memStick, dvd4, false);
+		assertConnect(cf1, dvd4, false);
+		assertConnect(cf2, dvd4, false);
+		assertConnect(usb1, dvd4, false);
+		assertConnect(usb2, dvd4, false);
+		assertConnect(usb3, dvd4, false);
+		
+		info("BluRay doesn't fit into SD-, MiniSD-, MicroSD-, MemoryStick-, CF1-, CF2-, and USB-Slot");
+		assertConnect(sd, bd4, false);
+		assertConnect(mSd, bd4, false);
+		assertConnect(muSd, bd4, false);
+		assertConnect(memStick, bd4, false);
+		assertConnect(cf1, bd4, false);
+		assertConnect(cf2, bd4, false);
+		assertConnect(usb1, bd4, false);
+		assertConnect(usb2, bd4, false);
+		assertConnect(usb3, bd4, false);
+		
 		info("...sucess! \n");
 	}
 	
@@ -203,6 +262,7 @@ public class Test {
 		
 		//insert external Harddisk to USB Port 2 without ejecting from Port 1
 		//should not work
+		info("external harddisc hasn't been ejected from port1");
 		assertConnect(usb2, extHdDev, false);
 
 		//eject External Harddisk from Port 1 & plug to Port 2
