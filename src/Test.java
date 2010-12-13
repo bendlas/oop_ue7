@@ -126,7 +126,7 @@ public class Test {
 		//CF1Card in CF2Slot 
 		assertConnect(cf2, CF1Card, true);
 		
-		//CF2Card in CF1Slot
+		//CF2Card passt nicht in CF1Slot
 		assertConnect(cf1, CF2Card, false);
 		
 		//plug Hama MiniSDCard in SDSlot, and then try to plug it into MiniSDSlot without eject
