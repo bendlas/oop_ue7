@@ -133,7 +133,7 @@ public class Test {
 		//MiniSD passt in SD Slot
 		assertConnect(sd, miniSDCard, true);
 
-		//wenn schon eine MiniSD im SD slot ist kann keine weitere SD Karte hinzugef�gt werden
+		//wenn schon eine MiniSD im SD slot ist kann keine weitere SD Karte hinzugefuegt werden
 		assertConnect(sd, SDCard, false);
 		sd.eject();
 		
@@ -148,12 +148,12 @@ public class Test {
 		//CF1Card in CF2Slot 
 		assertConnect(cf2, CF1Card, true);
 		
-		//CF2Card in CF1Slot
+		//CF2Card passt nicht in CF1Slot
 		assertConnect(cf1, CF2Card, false);
 		
 		//plug Hama MiniSDCard in SDSlot, and then try to plug it into MiniSDSlot without eject
 		assertConnect(sd, miniSDCard, true);
-		//sollte nicht m�glich sein
+		//sollte nicht moeglich sein
 		assertConnect(mSd, miniSDCard, false);
 		info("... sucess!" + "\n");
 
@@ -172,6 +172,7 @@ public class Test {
 		BluRay bd3 = new BluRay("The Ramones in Concert SPECIAL");
 		
 		assertConnect(cd, cd1, true);
+		assertConnect(cd, cd2, false); //fehler: cd-slot bereits belegt
 		cd.eject();
 		assertConnect(cd, dvd1, false);
 		assertConnect(cd, bd1, false);
@@ -184,12 +185,14 @@ public class Test {
 		assertConnect(dvd, bd2, false);
 		
 		assertConnect(bd, cd3, true);
+		assertConnect(cd, cd3, false); //fehler: cd3 liegt schon im bd-slot
 		bd.eject();
 		assertConnect(bd, dvd3, true);
 		bd.eject();
 		assertConnect(bd, bd3, true);
 		bd.eject();
-		info("Optical Devices (CD, DVD, BluRay) Testcases ... sucess!");
+		
+		info("...sucess! \n");
 	}
 	
 	private void testUSBDev(){
