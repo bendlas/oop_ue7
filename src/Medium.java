@@ -2,9 +2,6 @@
 abstract public class Medium implements Device {
 	protected Slot holder;
 	
-	/**
-	 * package visible for Slot
-	 */
 	protected void eject() {
 		while (holder != null) {
 			holder.eject();
