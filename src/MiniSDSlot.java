@@ -12,7 +12,7 @@ public class MiniSDSlot extends Slot {
 
 	@Override
 	public String getName() {
-		return "Mini SD  Slot";
+		return "Mini SD Slot";
 	}
 
 }
