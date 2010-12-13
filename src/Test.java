@@ -100,7 +100,7 @@ public class Test {
 		error("TODO: No test defined");
 	}
 	private void testCards() {
-		info("Testing Optical Drives");
+		info("Testing Cardreader");
 		SD SDCard = new SD("Hama SD Card");
 		MicroSD microSDCard = new MicroSD("Hama MicroSD Card");
 		MiniSD miniSDCard = new MiniSD("Hama MiniSD Card");
@@ -140,6 +140,7 @@ public class Test {
 		assertConnect(sd, miniSDCard, true);
 		//sollte nicht möglich sein
 		assertConnect(mSd, miniSDCard, false);
+		info("Cardreaser Testcases ... sucess!");
 		
 	}
 	private void testOptical() {
