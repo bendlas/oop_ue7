@@ -37,7 +37,7 @@ abstract public class Medium implements Device {
 	/* 
 	 * post: inserts medium if it fits into slot;
 	 * 		 will be overwritten by subclasses;
-	 * 		 subclasses call doInsert for matching slot
+	 * 		 subclasses return result of doInsert for matching slot
 	 */
 	protected boolean insertToUSBSlot(USBSlot port) {
 		return false;
