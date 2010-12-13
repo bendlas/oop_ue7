@@ -111,7 +111,7 @@ public class Test {
 		//MiniSD passt in SD Slot
 		assertConnect(sd, miniSDCard, true);
 
-		//wenn schon eine MiniSD im SD slot ist kann keine weitere SD Karte hinzugef�gt werden
+		//wenn schon eine MiniSD im SD slot ist kann keine weitere SD Karte hinzugefuegt werden
 		assertConnect(sd, SDCard, false);
 		sd.eject();
 		
