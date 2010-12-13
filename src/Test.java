@@ -89,9 +89,9 @@ public class Test {
 		info("Testing Optical Drives");
 		SD m = new SD("Babz' Nacktfotos");
 		assertConnect(sd, m, true);
-		printComputer();
-//		sd.eject();
-//		printComputer();
+		assertInserted(sd, m);
+		sd.eject();
+		assertEmpty(sd);
 		error("TODO: No test defined");
 	}
 	private void testEjectable() {
@@ -135,10 +135,13 @@ public class Test {
 	}
 	
 	public static void assertInserted(Slot slot, Medium medium) {
-		assert_(slot.getInserted().equals(medium), String.format("Slot %s doesn't contain %s", slot, medium));
+		assert_(medium.equals(slot.getInserted()), String.format("Slot %s doesn't contain %s", slot, medium));
 	}
 	
 	public static void assertInserted(DeviceHolder holder, Device...dev) {
 		assert_(holder.volumes().containsAll(Arrays.asList(dev)), String.format("DeviceHolder %s doesn't contain %s", holder, dev));
+	}
+	public static void assertEmpty(Slot slot) {
+		assert_(slot.getInserted() == null, String.format("Slot %s not empty", slot));
 	}
 }
