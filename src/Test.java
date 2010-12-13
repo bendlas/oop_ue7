@@ -80,10 +80,9 @@ public class Test {
 			
 	public static void main(String[] args) {
 		new Test().testBase();
-		new Test().testEjectable();
 		new Test().testCards();
 		new Test().testOptical();
-		// ...
+
 	}
 	private void testBase() {
 		info("Testing Optical Drives");
@@ -94,13 +93,50 @@ public class Test {
 		assertEmpty(sd);
 		error("TODO: No test defined");
 	}
-	private void testEjectable() {
-		info("Testing Optical Drives");
-		error("TODO: No test defined");
-	}
+
 	private void testCards() {
-		info("Testing Optical Drives");
-		error("TODO: No test defined");		
+		info("Testing Cardreader");
+		SD SDCard = new SD("Hama SD Card");
+		MicroSD microSDCard = new MicroSD("Hama MicroSD Card");
+		MiniSD miniSDCard = new MiniSD("Hama MiniSD Card");
+		CF1 CF1Card = new CF1("Hama CompactFlash Card");
+		CF2 CF2Card = new CF2("Hama CompactFlash II Card");
+		MemoryStick MStick = new MemoryStick("Sony MemoryStick");
+		
+		assertConnect(sd, SDCard, true);
+		sd.eject();
+		
+		//MicroSD passt in SD Slot
+		assertConnect(sd, microSDCard, true);
+		sd.eject();
+		
+		//MiniSD passt in SD Slot
+		assertConnect(sd, miniSDCard, true);
+
+		//wenn schon eine MiniSD im SD slot ist kann keine weitere SD Karte hinzugef�gt werden
+		assertConnect(sd, SDCard, false);
+		sd.eject();
+		
+		//MemoryStick passt nicht in den SD Slot
+		assertConnect(sd, MStick, false);
+		sd.eject();
+		
+		//microSDCard in miniSD Slot
+		assertConnect(mSd,miniSDCard, true);
+		mSd.eject();
+		
+		//CF1Card in CF2Slot 
+		assertConnect(cf2, CF1Card, true);
+		
+		//CF2Card in CF1Slot
+		assertConnect(cf1, CF2Card, false);
+		
+		//plug Hama MiniSDCard in SDSlot, and then try to plug it into MiniSDSlot without eject
+		assertConnect(sd, miniSDCard, true);
+		//sollte nicht m�glich sein
+		assertConnect(mSd, miniSDCard, false);
+		info("Cardreaser Testcases ... sucess!");
+		
 	}
 	private void testOptical() {
 		info("Testing Optical Drives");
@@ -132,7 +168,6 @@ public class Test {
 		bd.eject();
 		assertConnect(bd, bd3, true);
 		bd.eject();
-		assert_(false, "Please define tests");
 	}
 	
 	public static void out(String...out) {
