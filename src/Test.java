@@ -90,19 +90,18 @@ public class Test {
 		SD m = new SD("Babz' Nacktfotos");
 		assertConnect(sd, m, true);
 		printComputer();
-//		sd.eject();
-//		printComputer();
+		sd.eject();
+		printComputer();
 		error("TODO: No test defined");
 	}
 	private void testEjectable() {
 		info("Testing Optical Drives");
-		sd.eject();
 		printComputer();
 		error("TODO: No test defined");
 	}
 	private void testCards() {
 		info("Testing Optical Drives");
-		error("TODO: No test defined");		
+		SD sd_ = new SD("Hama SD Card");
 	}
 	private void testOptical() {
 		info("Testing Optical Drives");
