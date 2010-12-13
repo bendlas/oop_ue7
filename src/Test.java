@@ -80,10 +80,9 @@ public class Test {
 			
 	public static void main(String[] args) {
 		new Test().testBase();
-		new Test().testEjectable();
 		new Test().testCards();
 		new Test().testOptical();
-		// ...
+
 	}
 	private void testBase() {
 		info("Testing Optical Drives");
@@ -94,11 +93,7 @@ public class Test {
 		assertEmpty(sd);
 		error("TODO: No test defined");
 	}
-	private void testEjectable() {
-		info("Testing Optical Drives");
-		printComputer();
-		error("TODO: No test defined");
-	}
+
 	private void testCards() {
 		info("Testing Cardreader");
 		SD SDCard = new SD("Hama SD Card");
