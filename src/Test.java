@@ -86,13 +86,9 @@ public class Test {
 		// ...
 	}
 	private void testBase() {
-		info("Testing Optical Drives");
-		SD m = new SD("Babz' Nacktfotos");
-		assertConnect(sd, m, true);
-		assertInserted(sd, m);
-		sd.eject();
-		assertEmpty(sd);
-		error("TODO: No test defined");
+		info("Testing Computer ...");
+		assertInserted(computer, hd, ssd);
+		info("... success!\n");
 	}
 	private void testEjectable() {
 		info("Testing Optical Drives");
