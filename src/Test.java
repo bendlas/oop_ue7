@@ -167,7 +167,7 @@ public class Test {
 		bd.eject();
 		assertConnect(bd, bd3, true);
 		bd.eject();
-		info("...sucess!");
+		info("...sucess! \n");
 	}
 	
 	private void testUSBDev(){
