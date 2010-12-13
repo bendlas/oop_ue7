@@ -111,7 +111,7 @@ public class Test {
 		//MiniSD passt in SD Slot
 		assertConnect(sd, miniSDCard, true);
 
-		//wenn schon eine MiniSD im SD slot ist kann keine weitere SD Karte hinzugef�gt werden
+		//wenn schon eine MiniSD im SD slot ist kann keine weitere SD Karte hinzugefuegt werden
 		assertConnect(sd, SDCard, false);
 		sd.eject();
 		
@@ -126,12 +126,12 @@ public class Test {
 		//CF1Card in CF2Slot 
 		assertConnect(cf2, CF1Card, true);
 		
-		//CF2Card in CF1Slot
+		//CF2Card passt nicht in CF1Slot
 		assertConnect(cf1, CF2Card, false);
 		
 		//plug Hama MiniSDCard in SDSlot, and then try to plug it into MiniSDSlot without eject
 		assertConnect(sd, miniSDCard, true);
-		//sollte nicht m�glich sein
+		//sollte nicht moeglich sein
 		assertConnect(mSd, miniSDCard, false);
 		info("... sucess!" + "\n");
 
