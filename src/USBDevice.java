@@ -8,6 +8,7 @@ abstract public class USBDevice extends Medium implements DeviceHolder {
 	}
 	
 
+	//post: returns "volume()" of all Devices Plugged to 
 	@Override
 	public String toString() {
 		StringBuilder buf = new StringBuilder(getName()).append('{');

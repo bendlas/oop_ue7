@@ -13,7 +13,6 @@ public class Computer implements DeviceHolder {
 	
 	@Override
 	public Collection<Device> volumes() {
-		// TODO Auto-generated method stub
 		//hint: arrays.asList
 		return Arrays.asList(devices);
 	}
