@@ -15,11 +15,15 @@ public abstract class Slot implements Device {
 	
 	public void eject() {
 		while (enclosed != null) {
-			enclosed.eject();
+			Medium in = enclosed;
 			enclosed = null;
+			in.eject();
 		}
 	}
 	
+	public Medium getInserted() {
+		return enclosed;
+	}
 
 	@Override
 	public String toString() {
