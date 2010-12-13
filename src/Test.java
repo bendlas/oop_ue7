@@ -133,4 +133,12 @@ public class Test {
 	public static void assertConnect(Slot slot, Medium medium, boolean connects) {
 		assert_(slot.insert(medium) == connects, String.format("When inserting %s to %s, connected %b", medium, slot, !connects));
 	}
+	
+	public static void assertInserted(Slot slot, Medium medium) {
+		assert_(slot.getInserted().equals(medium), String.format("Slot %s doesn't contain %s", slot, medium));
+	}
+	
+	public static void assertInserted(DeviceHolder holder, Device...dev) {
+		assert_(holder.volumes().containsAll(Arrays.asList(dev)), String.format("DeviceHolder %s doesn't contain %s", holder, dev));
+	}
 }
