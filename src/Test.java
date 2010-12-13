@@ -104,6 +104,15 @@ public class Test {
 	}
 	private void testOptical() {
 		info("Testing Optical Drives");
+		hd.assertConnect(cd, new CD("Sex Pistols"), true);
+		assertConnect(cd, new DVD("Sex Pistols in Concert"), true); //gibt error
+		assertConnect(cd, new BluRay("Sex Pistols in Concert"), true); //gibt error
+		assertConnect(dvd, new CD("The Clash"), true);
+		assertConnect(dvd, new DVD("House"), true);
+		assertConnect(dvd, new BluRay("House BluRay"), true); //gibt error
+		assertConnect(bd, new CD("The Ramones"), true);
+		assertConnect(bd, new DVD("Ramones in Concert"), true);
+		assertConnect(bd, new BluRay("Ramones in Concert"), true);
 		error("TODO: No test defined");
 		assert_(false, "Please define tests");
 	}
