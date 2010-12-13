@@ -168,7 +168,7 @@ public class Test {
 		bd.eject();
 		assertConnect(bd, bd3, true);
 		bd.eject();
-		info("Optical Devices (CD, DVD, BluRay) Testcases ... sucess!");
+		info("...sucess!");
 	}
 	
 	public static void out(String...out) {
