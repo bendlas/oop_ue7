@@ -60,7 +60,7 @@ public class Test {
 			}
 			@Override
 			public Collection<Device> volumes() {
-				return Arrays.asList((Device) muSd, cf1, cf2, usb3, bd);
+				return Arrays.asList(new Device[]{ muSd, cf1, cf2, usb3, bd });
 			}
 		};
 		
