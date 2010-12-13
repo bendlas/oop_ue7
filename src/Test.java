@@ -104,7 +104,7 @@ public class Test {
 	}
 	private void testOptical() {
 		info("Testing Optical Drives");
-		hd.assertConnect(cd, new CD("Sex Pistols"), true);
+		assertConnect(cd, new CD("Sex Pistols"), true);
 		assertConnect(cd, new DVD("Sex Pistols in Concert"), true); //gibt error
 		assertConnect(cd, new BluRay("Sex Pistols in Concert"), true); //gibt error
 		assertConnect(dvd, new CD("The Clash"), true);
