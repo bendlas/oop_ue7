@@ -11,6 +11,11 @@ public class MicroSD extends Medium {
 		return name;
 	}
 	
+	// FOR ALL INSERT-METHODS
+	/*
+	 * post: inserts medium into slot only if medium isnt inserted anywhere else
+	 * 		 and return true if insert successful
+	 */
 	@Override
 	protected boolean insertToMicroSDSlot(MicroSDSlot slot) {
 		return doInsert(slot);

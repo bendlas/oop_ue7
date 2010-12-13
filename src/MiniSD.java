@@ -10,6 +10,12 @@ public class MiniSD extends Medium {
 	public String getName(){
 		return name;
 	}
+	
+	// FOR ALL INSERT-METHODS
+	/*
+	 * post: inserts medium into slot only if medium isnt inserted anywhere else
+	 * 		 and return true if insert successful
+	 */
 	@Override
 	protected boolean insertToMiniSDSlot(MiniSDSlot slot) {
 		return doInsert(slot);

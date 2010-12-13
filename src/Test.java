@@ -1,7 +1,6 @@
 import java.util.Arrays;
 import java.util.Collection;
 
-
 public class Test {
 	Slot cd;
 	Slot dvd;
@@ -172,7 +171,8 @@ public class Test {
 		BluRay bd3 = new BluRay("The Ramones in Concert SPECIAL");
 		
 		assertConnect(cd, cd1, true);
-		assertConnect(cd, cd2, false); //fehler: cd-slot bereits belegt
+		info("cd-slot bereits belegt von cd1");
+		assertConnect(cd, cd2, false);
 		cd.eject();
 		assertConnect(cd, dvd1, false);
 		assertConnect(cd, bd1, false);
@@ -185,7 +185,8 @@ public class Test {
 		assertConnect(dvd, bd2, false);
 		
 		assertConnect(bd, cd3, true);
-		assertConnect(cd, cd3, false); //fehler: cd3 liegt schon im bd-slot
+		info("cd3 liegt bereits im bd-slot und kann daher nicht in den cd-slot eingelegt werden");
+		assertConnect(cd, cd3, false);
 		bd.eject();
 		assertConnect(bd, dvd3, true);
 		bd.eject();

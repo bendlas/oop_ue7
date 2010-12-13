@@ -11,6 +11,9 @@ public class SSD implements Device {
 		return name;
 	}
 
+	/*
+	 * returns name of device
+	 */
 	@Override
 	public String toString() {
 		return getName();

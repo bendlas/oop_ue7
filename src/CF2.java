@@ -7,6 +7,11 @@ public class CF2 extends Medium {
 		this.name = name;
 	}
 	
+	// FOR ALL INSERT-METHODS
+	/*
+	 * post: inserts medium into slot only if medium isnt inserted anywhere else
+	 * 		 and return true if insert successful
+	 */
 	public String getName(){
 		return name;
 	}
