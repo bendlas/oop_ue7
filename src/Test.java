@@ -60,13 +60,12 @@ public class Test {
 			}
 			@Override
 			public Collection<Device> volumes() {
-				return Arrays.asList((Device) muSd, cf1, cf2, usb3, bd);
+				return Arrays.asList(new Device[]{ muSd, cf1, cf2, usb3, bd });
 			}
 		};
 		
 		computer = new Computer(
-				hd, ssd, cd, dvd, sd, mSd,
-				cf1, usb1, usb2, cardReader);
+				hd, ssd, cd, dvd, sd, mSd, usb1, usb2, cardReader);
 	}
 	
 
@@ -79,15 +78,38 @@ public class Test {
 	
 			
 	public static void main(String[] args) {
-		new Test().testBase();
 		new Test().testCards();
 		new Test().testOptical();
 		new Test().testUSBDev();
+		new Test().testOutput();
 
 	}
-	private void testBase() {
-		info("Testing Computer ...");
+	private void testOutput() {
+		info("Testing output ...");
 		assertInserted(computer, hd, ssd);
+		info("Attaching External Harddisk to USB Port on cardreader");
+		assertConnect(usb3, extHdDev, true);
+		info("Insert CD to drive");
+		assertConnect(cd, new CD("Test CD"), true);
+		info("Insert CF1 Card to CF2 slot");
+		assertConnect(cf2, new CF1("Test CF1"), true);
+		info("Attaching inline defined USB Stick to USB Port");
+		assertConnect(usb1, new USBDevice() {
+			@Override
+			public String getName() {
+				return "Test USB Stick";
+			}
+			@Override
+			public Collection<Device> volumes() {
+				return Arrays.asList(new Device[] {
+						new HD("USB Volume")
+				});
+			}
+		}, true);
+		info("Trying to insert CF2 Card to CF1 Slot, expecting not to work, should not show up afterwards");
+		assertConnect(cf1, new CF2("Test CF2"), false);
+		info("Printing attached volumes to show off fancy output format");
+		printComputer();
 		info("... success!\n");
 	}
 
