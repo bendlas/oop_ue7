@@ -173,7 +173,7 @@ public class Test {
 	
 	public static void assertConnect(Slot slot, Medium medium, boolean connects) {
 		assert_(slot.insert(medium) == connects, String.format("When inserting %s to %s, connected %b", medium, slot, !connects));
-		assertInserted(slot, medium);
+		assert_(medium.equals(slot.getInserted()) == connects, String.format("Slot %s doesn't contain %s", slot, medium));
 	}
 	
 	public static void assertInserted(Slot slot, Medium medium) {
