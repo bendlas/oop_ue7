@@ -104,16 +104,34 @@ public class Test {
 	}
 	private void testOptical() {
 		info("Testing Optical Drives");
-		assertConnect(cd, new CD("Sex Pistols"), true);
-		assertConnect(cd, new DVD("Sex Pistols in Concert"), true); //gibt error
-		assertConnect(cd, new BluRay("Sex Pistols in Concert"), true); //gibt error
-		assertConnect(dvd, new CD("The Clash"), true);
-		assertConnect(dvd, new DVD("House"), true);
-		assertConnect(dvd, new BluRay("House BluRay"), true); //gibt error
-		assertConnect(bd, new CD("The Ramones"), true);
-		assertConnect(bd, new DVD("Ramones in Concert"), true);
-		assertConnect(bd, new BluRay("Ramones in Concert"), true);
-		error("TODO: No test defined");
+		CD cd1 = new CD("Sex Pistols");
+		CD cd2 = new CD("The Clash");
+		CD cd3 = new CD("The Ramones");
+		DVD dvd1 = new DVD("Sex Pistols in Concert");
+		DVD dvd2 = new DVD("The Clash in Concert");
+		DVD dvd3 = new DVD("The Ramones in Concert");
+		BluRay bd1 = new BluRay("Sex Pistols in Concert SPECIAL");
+		BluRay bd2 = new BluRay("The Clash in Concert SPECIAL");
+		BluRay bd3 = new BluRay("The Ramones in Concert SPECIAL");
+		
+		assertConnect(cd, cd1, true);
+		cd.eject();
+		assertConnect(cd, dvd1, false);
+		assertConnect(cd, bd1, false);
+		
+		assertConnect(dvd, cd2, true);
+		dvd.eject();
+		assertConnect(dvd, dvd2, true);
+		dvd.eject();
+		dvd.eject();
+		assertConnect(dvd, bd2, false);
+		
+		assertConnect(bd, cd3, true);
+		bd.eject();
+		assertConnect(bd, dvd3, true);
+		bd.eject();
+		assertConnect(bd, bd3, true);
+		bd.eject();
 		assert_(false, "Please define tests");
 	}
 	
