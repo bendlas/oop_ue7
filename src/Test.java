@@ -80,28 +80,91 @@ public class Test {
 			
 	public static void main(String[] args) {
 		new Test().testBase();
-		new Test().testEjectable();
 		new Test().testCards();
 		new Test().testOptical();
-		// ...
+
 	}
 	private void testBase() {
 		info("Testing Computer ...");
 		assertInserted(computer, hd, ssd);
 		info("... success!\n");
 	}
-	private void testEjectable() {
-		info("Testing Optical Drives");
-		error("TODO: No test defined");
-	}
+
 	private void testCards() {
-		info("Testing Optical Drives");
-		error("TODO: No test defined");		
+		info("Testing Cardreader");
+		SD SDCard = new SD("Hama SD Card");
+		MicroSD microSDCard = new MicroSD("Hama MicroSD Card");
+		MiniSD miniSDCard = new MiniSD("Hama MiniSD Card");
+		CF1 CF1Card = new CF1("Hama CompactFlash Card");
+		CF2 CF2Card = new CF2("Hama CompactFlash II Card");
+		MemoryStick MStick = new MemoryStick("Sony MemoryStick");
+		
+		assertConnect(sd, SDCard, true);
+		sd.eject();
+		
+		//MicroSD passt in SD Slot
+		assertConnect(sd, microSDCard, true);
+		sd.eject();
+		
+		//MiniSD passt in SD Slot
+		assertConnect(sd, miniSDCard, true);
+
+		//wenn schon eine MiniSD im SD slot ist kann keine weitere SD Karte hinzugef�gt werden
+		assertConnect(sd, SDCard, false);
+		sd.eject();
+		
+		//MemoryStick passt nicht in den SD Slot
+		assertConnect(sd, MStick, false);
+		sd.eject();
+		
+		//microSDCard in miniSD Slot
+		assertConnect(mSd,miniSDCard, true);
+		mSd.eject();
+		
+		//CF1Card in CF2Slot 
+		assertConnect(cf2, CF1Card, true);
+		
+		//CF2Card in CF1Slot
+		assertConnect(cf1, CF2Card, false);
+		
+		//plug Hama MiniSDCard in SDSlot, and then try to plug it into MiniSDSlot without eject
+		assertConnect(sd, miniSDCard, true);
+		//sollte nicht m�glich sein
+		assertConnect(mSd, miniSDCard, false);
+		info("Cardreaser Testcases ... sucess!");
+		
 	}
 	private void testOptical() {
 		info("Testing Optical Drives");
-		error("TODO: No test defined");
-		assert_(false, "Please define tests");
+		CD cd1 = new CD("Sex Pistols");
+		CD cd2 = new CD("The Clash");
+		CD cd3 = new CD("The Ramones");
+		DVD dvd1 = new DVD("Sex Pistols in Concert");
+		DVD dvd2 = new DVD("The Clash in Concert");
+		DVD dvd3 = new DVD("The Ramones in Concert");
+		BluRay bd1 = new BluRay("Sex Pistols in Concert SPECIAL");
+		BluRay bd2 = new BluRay("The Clash in Concert SPECIAL");
+		BluRay bd3 = new BluRay("The Ramones in Concert SPECIAL");
+		
+		assertConnect(cd, cd1, true);
+		cd.eject();
+		assertConnect(cd, dvd1, false);
+		assertConnect(cd, bd1, false);
+		
+		assertConnect(dvd, cd2, true);
+		dvd.eject();
+		assertConnect(dvd, dvd2, true);
+		dvd.eject();
+		dvd.eject();
+		assertConnect(dvd, bd2, false);
+		
+		assertConnect(bd, cd3, true);
+		bd.eject();
+		assertConnect(bd, dvd3, true);
+		bd.eject();
+		assertConnect(bd, bd3, true);
+		bd.eject();
+		info("Optical Devices (CD, DVD, BluRay) Testcases ... sucess!");
 	}
 	
 	public static void out(String...out) {
