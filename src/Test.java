@@ -19,7 +19,7 @@ public class Test {
 	Slot usb3;
 	
 	Device hd, extHd, ssd;
-	Device extHdDev, cardReader;
+	USBDevice extHdDev, cardReader;
 	
 	Computer computer;
 	
@@ -66,7 +66,7 @@ public class Test {
 		
 		computer = new Computer(
 				hd, ssd, cd, dvd, sd, mSd,
-				cf1, usb1, usb2, extHdDev, cardReader);
+				cf1, usb1, usb2, cardReader);
 	}
 	
 
@@ -82,6 +82,7 @@ public class Test {
 		new Test().testBase();
 		new Test().testCards();
 		new Test().testOptical();
+		new Test().testUSBDev();
 
 	}
 	private void testBase() {
@@ -103,6 +104,7 @@ public class Test {
 		CF2 CF2Card = new CF2("Hama CompactFlash II Card");
 		MemoryStick MStick = new MemoryStick("Sony MemoryStick");
 		
+		//SD Card in SD Slot
 		assertConnect(sd, SDCard, true);
 		sd.eject();
 		
@@ -135,13 +137,34 @@ public class Test {
 		assertConnect(sd, miniSDCard, true);
 		//sollte nicht möglich sein
 		assertConnect(mSd, miniSDCard, false);
-		info("Cardreaser Testcases ... sucess!");
+		info("... sucess!" + "\n");
+
 		
 	}
 	private void testOptical() {
 		info("Testing Optical Drives");
 		error("TODO: No test defined");
 //		assert_(false, "Please define tests");
+	}
+	
+	private void testUSBDev(){
+		info("Testing USB Devices...");
+		//insert external Harddisk to USB Port 1
+		assertConnect(usb1, extHdDev, true);
+		
+		//insert external Harddisk to USB Port 2 without ejecting from Port 1
+		//should not work
+		assertConnect(usb2, extHdDev, false);
+
+		//eject External Harddisk from Port 1 & plug to Port 2
+		usb1.eject();
+		assertConnect(usb2, extHdDev, true);
+		
+		//plug cardreader to USB Port 1
+		assertConnect(usb1, cardReader, true);
+		
+		info("... sucess!"  + "\n");
+		
 	}
 	
 	public static void out(String...out) {
